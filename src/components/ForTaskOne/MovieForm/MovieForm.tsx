@@ -1,12 +1,11 @@
 import React, {useState} from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {Movie, MovieForm} from "../../../type.s";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 interface Props {
   onSubmit: (movie: Movie) => void,
 }
 
-const MovieForm: React.FC<Props> = ({onSubmit}) => {
+const MovieForm: React.FC<Props> = React.memo(({onSubmit}) => {
   const [stateFrom, setStateForm] = useState<MovieForm>(
     {name: ""}
   );
@@ -20,10 +19,14 @@ const MovieForm: React.FC<Props> = ({onSubmit}) => {
 
   const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({
-      id: Math.random().toString(),
-      ...stateFrom,
-    })
+    if(stateFrom.name !== "") {
+      onSubmit({
+        id: Math.random().toString(),
+        ...stateFrom,
+      })
+
+      setStateForm({name:""});
+    }
   };
 
   return (
@@ -40,9 +43,11 @@ const MovieForm: React.FC<Props> = ({onSubmit}) => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Add</button>
       </form>
   );
-};
+}, (prevProps, nextProps) => {
+  return nextProps === prevProps;
+});
 
 export default MovieForm;
