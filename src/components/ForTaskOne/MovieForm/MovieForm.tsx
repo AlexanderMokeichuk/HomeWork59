@@ -23,7 +23,7 @@ const MovieForm: React.FC<Props> = React.memo(({onSubmit}) => {
       onSubmit({
         id: Math.random().toString(),
         ...stateFrom,
-      })
+      });
 
       setStateForm({name:""});
     }

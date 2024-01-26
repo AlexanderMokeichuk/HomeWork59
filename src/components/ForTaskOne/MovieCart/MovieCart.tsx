@@ -1,6 +1,6 @@
 import React from "react";
 import {Movie} from "../../../type.s";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface Props {
   movie: Movie;
@@ -8,7 +8,8 @@ interface Props {
   deleteMovie: () => void;
   onChangeMovieName: React.ChangeEventHandler<HTMLInputElement>;
 }
-const MovieCart: React.FC<Props> = React.memo( ({movie, index, deleteMovie, onChangeMovieName}) => {
+
+const MovieCart: React.FC<Props> = React.memo(({movie, index, deleteMovie, onChangeMovieName}) => {
 
   return (
     <div className={"d-flex gap-2 flex-row align-items-center border border-2 rounded-1 p-2 bg-secondary"}>
@@ -29,7 +30,7 @@ const MovieCart: React.FC<Props> = React.memo( ({movie, index, deleteMovie, onCh
       </button>
     </div>
   );
-},(prevProps, nextProps) => {
+}, (prevProps, nextProps) => {
   return nextProps === prevProps && nextProps.movie === nextProps.movie;
 });
 

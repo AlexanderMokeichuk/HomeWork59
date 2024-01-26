@@ -46,7 +46,7 @@ function App() {
       setDataFromServer({
         id: request.id,
         joke: request.value,
-      })
+      });
       return request;
     }
   };
@@ -57,10 +57,10 @@ function App() {
       setDataFromServer({
         id: request.id,
         joke: request.value,
-      })
+      });
     };
 
-    setState()
+    setState();
   }, []);
 
 
@@ -81,12 +81,12 @@ function App() {
               deleteMovie={() => deleteMovie(mov.id)}
               onChangeMovieName={(e) => onChangeMovieName(e, mov.id)}
 
-            />
+            />;
           })}
         </div>
       </div>
     </div>
-  )
+  );
 
   if (!switchTask) {
     task = <>
@@ -97,7 +97,7 @@ function App() {
 
         <button onClick={requestToServer} type={"button"} className={"mt-auto btn btn-secondary"}>Next</button>
       </div>
-    </>
+    </>;
   }
 
   return (
@@ -123,7 +123,7 @@ function App() {
         {task}
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
